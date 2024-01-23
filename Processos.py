@@ -9,12 +9,12 @@ from selenium.webdriver.chrome.options import Options
 
 tela = Tk()
 
-tela.title("Imagens")
+tela.title("Automação de Processos")
 tela.geometry("792x537")
 tela.resizable(False,False)
 
 # imagem = ImageTk.PhotoImage(Image.open("E:\\Python_Udemy\\RPA\\gabarra.jpg"))
-imagem = ImageTk.PhotoImage(Image.open("gabarra.jpg"))
+imagem = ImageTk.PhotoImage(Image.open("images\\gabarra.jpg"))
 fundo = Label(image=imagem)
 fundo.place(x=-2,y=0)
 
@@ -89,14 +89,16 @@ def tjsp():
             pg.press("enter")
             pg.sleep(5)
 
-            Label(text="Dados enviados com sucesso!", font=("Arial", 15), fg="white", bg="#1f1f1f").grid(row=6, column=0, padx=10, pady = 10, sticky="W")
-        else:
-            Label(text="Envio de dados cancelado!", font=("Arial", 15), fg="white", bg="#1f1f1f").grid(row=6, column=0, padx=10, pady = 10, sticky="W")
+            zap.quit()
+
+            messagebox.showinfo("Mensagem", "Dados enviados com sucesso")
+        else:  
+            messagebox.showinfo("Mensagem", "Envio de dados cancelado!")
 
     
     dig13 = Label(text="Número do processo: ", font=("Arial", 15), fg="white", bg="#1f1f1f")
     dig13.grid(row=1, column=0, padx=10, pady = 10, sticky="W")
-    entryDig13 = Entry(font=("Arial", 15))
+    entryDig13 = Entry(font=("Arial", 15), width=20)
     entryDig13.grid(row=2, column=0, padx = 10)
 
     dig4 = Label(text="8.26", font=("Arial", 15), fg="black", bg="white")
@@ -106,13 +108,13 @@ def tjsp():
 
     nome = Label(text="Nome do cliente: ", font=("Arial", 15), fg="white", bg="#1f1f1f")
     nome.grid(row=3, column=0, padx=10, pady = 10, sticky="W")
-    entryNome = Entry(font=("Arial", 15))
+    entryNome = Entry(font=("Arial", 15), width=20)
     entryNome.grid(row=4, column=0, padx = 10)
 
-    botao = Button(tela, text="Pesquisar", command=autoTJSP, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    botao = Button(tela, text="Pesquisar", command=autoTJSP, fg="#1f1f1f", width=10, font="Arial 10 bold", cursor="hand2")
     botao.grid(row=2, column=3, padx=5)
 
-    btn_voltar = Button(tela, text="Voltar", command=tjsp_del, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    btn_voltar = Button(tela, text="Voltar", command=tjsp_del, fg="#1f1f1f", width=10, font="Arial 10 bold", cursor="hand2")
     btn_voltar.grid(row=2, column=4, padx=5)
 
 def trf3():
@@ -172,9 +174,11 @@ def trf3():
                 pg.press("enter")
                 pg.sleep(5)
 
-                Label(text="Dados enviados com sucesso!", font=("Arial", 15), fg="white", bg="#1f1f1f").grid(row=6, column=0, padx=10, pady = 10, sticky="W")
-            else:
-                Label(text="Envio de dados cancelado!", font=("Arial", 15), fg="white", bg="#1f1f1f").grid(row=6, column=0, padx=10, pady = 10, sticky="W")
+                zap.quit()
+
+                messagebox.showinfo("Mensagem", "Dados enviados com sucesso")
+            else:  
+                messagebox.showinfo("Mensagem", "Envio de dados cancelado!")
             
 
         except Exception as e:
