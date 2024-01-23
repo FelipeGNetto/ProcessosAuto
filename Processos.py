@@ -13,6 +13,7 @@ tela.title("Imagens")
 tela.geometry("792x537")
 tela.resizable(False,False)
 
+# imagem = ImageTk.PhotoImage(Image.open("E:\\Python_Udemy\\RPA\\gabarra.jpg"))
 imagem = ImageTk.PhotoImage(Image.open("gabarra.jpg"))
 fundo = Label(image=imagem)
 fundo.place(x=-2,y=0)
@@ -20,6 +21,17 @@ fundo.place(x=-2,y=0)
 def tjsp():
     # Realizando a automação
     # nmr_proc = "00117749520220506" 1010191-42.2023.8.26.0597
+
+    def tjsp_del():
+        dig13.destroy()
+        entryDig13.destroy()
+        btn_voltar.destroy()
+        dig4.destroy()
+        entryDig4.destroy()
+        nome.destroy()
+        entryNome.destroy()
+        botao.destroy()
+        menu()
 
     def autoTJSP():
         nmr_proc1 = str(entryDig13.get())
@@ -87,10 +99,9 @@ def tjsp():
     entryDig13 = Entry(font=("Arial", 15))
     entryDig13.grid(row=2, column=0, padx = 10)
 
-
     dig4 = Label(text="8.26", font=("Arial", 15), fg="black", bg="white")
     dig4.grid(row=2, column=1, padx=10, pady=10, stick="W")
-    entryDig4 = Entry(font=("Arial", 15))
+    entryDig4 = Entry(font=("Arial", 15), width=5)
     entryDig4.grid(row=2, column=2, padx=10)
 
     nome = Label(text="Nome do cliente: ", font=("Arial", 15), fg="white", bg="#1f1f1f")
@@ -98,14 +109,25 @@ def tjsp():
     entryNome = Entry(font=("Arial", 15))
     entryNome.grid(row=4, column=0, padx = 10)
 
-    botao = Button(tela, text="Pesquisar", command=autoTJSP, fg="#1f1f1f", font="Arial 10 bold", width=27, cursor="hand2")
-    botao.grid(row=5, column=0, padx=10, pady = 30, stick="W")
+    botao = Button(tela, text="Pesquisar", command=autoTJSP, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    botao.grid(row=2, column=3, padx=5)
+
+    btn_voltar = Button(tela, text="Voltar", command=tjsp_del, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    btn_voltar.grid(row=2, column=4, padx=5)
 
 def trf3():
 # 0005253-49.2015.4.03.6102
+    def trf3_del():
+                num_proc.destroy()
+                entryNum.destroy()
+                nome.destroy()
+                entryNome.destroy()
+                botao.destroy()
+                btn_voltar.destroy()
+                menu()
+
     def autoTRF3():
         try:
-            
             nmr_proc = str(entryNum.get())
             name = str(entryNome.get())
 
@@ -170,28 +192,35 @@ def trf3():
     entryNome = Entry(font=("Arial", 15), width=25)
     entryNome.grid(row=4, column=0, padx = 10)
 
-    botao = Button(tela, text="Pesquisar", command=autoTRF3, fg="#1f1f1f", font="Arial 10 bold", width=25, cursor="hand2")
-    botao.grid(row=5, column=0, padx=50, pady = 30, stick="W")
+    botao = Button(tela, text="Pesquisar", command=autoTRF3, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    botao.grid(row=2, column=1, padx=5)
 
-def destruirTJSP():
-    op.destroy()
-    botao1.destroy()
-    botao2.destroy()
-    tjsp()
-
-def destruirTRF3():
-    op.destroy()
-    botao1.destroy()
-    botao2.destroy()
-    trf3()
+    btn_voltar = Button(tela, text="Voltar", command=trf3_del, fg="#1f1f1f", width=15, font="Arial 10 bold", cursor="hand2")
+    btn_voltar.grid(row=2, column=2, padx=5)
 
 
-op = Label(text="Qual tipo de processo deseja pesquisar?", font=("Arial", 15), fg="white", bg="#1f1f1f")
-op.pack(pady=20)
-botao1 = Button(tela, text="TJSP", command=destruirTJSP, fg="#1f1f1f", font="Arial 10 bold", width=20, cursor="hand2")
-botao1.pack(pady=10)
-botao2 = Button(tela, text="TRF3", command=destruirTRF3, fg="#1f1f1f", font="Arial 10 bold", width=20, cursor="hand2")
-botao2.pack(pady=10)
+def menu():
+    def destruirTJSP():
+        op.destroy()
+        botao1.destroy()
+        botao2.destroy()
+        tjsp()
+
+    def destruirTRF3():
+        op.destroy()
+        botao1.destroy()
+        botao2.destroy()
+        trf3()
+
+    op = Label(text="Qual tipo de processo deseja pesquisar?", font=("Arial", 15), fg="white", bg="#1f1f1f")
+    op.pack(pady=20)
+    botao1 = Button(tela, text="TJSP", command=destruirTJSP, fg="#1f1f1f", font="Arial 10 bold", width=20, cursor="hand2")
+    botao1.pack(pady=10)
+    botao2 = Button(tela, text="TRF3", command=destruirTRF3, fg="#1f1f1f", font="Arial 10 bold", width=20, cursor="hand2")
+    botao2.pack(pady=10)
+
+
+menu()
 
 
 tela.mainloop()
